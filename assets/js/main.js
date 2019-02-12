@@ -1,16 +1,20 @@
+// Define parts of the DOM
 let header = document.querySelector("header");
 let section = document.querySelector("section");
+// Set up network source
 let requestURL =
   "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json";
 let request = new XMLHttpRequest();
 request.open("GET", requestURL);
 request.responseType = "json";
 request.send();
+// Function to execute when the page is loading
 request.onload = function() {
   let superHeroes = request.response;
   populateHeader(superHeroes);
   showHeroes(superHeroes);
 };
+// Fill up the header
 function populateHeader(jsonObj) {
   let myH1 = document.createElement("h1");
   myH1.textContent = jsonObj["squadName"];
@@ -23,6 +27,7 @@ function populateHeader(jsonObj) {
   header.appendChild(myPara);
 }
 
+// Fill up the section
 function showHeroes(jsonObj) {
   let heroes = jsonObj["members"];
   for (let i = 0; i < heroes.length; i++) {
