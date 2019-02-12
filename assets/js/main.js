@@ -17,8 +17,9 @@ function populateHeader(jsonObj) {
   header.appendChild(myH1);
 
   let myPara = document.createElement("p");
-  myPara.textContent =
-    "Hometown: " + jsonObj["homeTown"] + " // Formed: " + jsonObj["formed"];
+  myPara.textContent = `Hometown: ${jsonObj["homeTown"]} // Formed:  ${
+    jsonObj["formed"]
+  }`;
   header.appendChild(myPara);
 }
 
@@ -33,8 +34,8 @@ function showHeroes(jsonObj) {
     let myList = document.createElement("ul");
 
     myH2.textContent = heroes[i].name;
-    myPara1.textContent = "Secret Identity: " + heroes[i].secretIdentity;
-    myPara2.textContent = "Age: " + heroes[i].age;
+    myPara1.textContent = `Secret Identity: ${heroes[i].secretIdentity}`;
+    myPara2.textContent = `Age: ${heroes[i].age}`;
     myPara3.textContent = "Superpowers: ";
 
     let superPowers = heroes[i].powers;
