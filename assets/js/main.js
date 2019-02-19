@@ -6,14 +6,23 @@ let requestURL =
   "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json";
 let request = new XMLHttpRequest();
 request.open("GET", requestURL);
-request.responseType = "json";
-request.send();
-// Function to execute when the page is loading
-request.onload = function() {
-  let superHeroes = request.response;
-  populateHeader(superHeroes);
-  showHeroes(superHeroes);
-};
+// request.responseType = "json";
+// request.send();
+// // Function to execute when the page is loading
+// request.onload = function() {
+//   let superHeroes = request.response;
+//   populateHeader(superHeroes);
+//   showHeroes(superHeroes);
+// };
+fetch(requestURL)
+  .then(response => {
+    return response.json();
+  }).then(data => {
+    populateHeader(data);
+    showHeroes(data);
+  }).catch(function (err) {
+    console.log("Something went wrong");
+  });
 // Fill up the header
 function populateHeader(jsonObj) {
   let myH1 = document.createElement("h1");
@@ -23,7 +32,7 @@ function populateHeader(jsonObj) {
   let myPara = document.createElement("p");
   myPara.textContent = `Hometown: ${jsonObj["homeTown"]} // Formed:  ${
     jsonObj["formed"]
-  }`;
+    }`;
   header.appendChild(myPara);
 }
 
